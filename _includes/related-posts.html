@@ -1,0 +1,8 @@
+<h3 class="text-xl font-semibold">Related Posts</h3>
+<ul class="space-y-2">
+  {% for post in site.posts limit:3 %}
+    {% if post.category == page.category and post.title != page.title %}
+      <li><a href="{{ post.url }}" class="text-blue-500 hover:underline">{{ post.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
