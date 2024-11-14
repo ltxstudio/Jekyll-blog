@@ -1,34 +1,23 @@
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById('searchInput');
+  const resultsContainer = document.getElementById('searchResults');
 
-searchInput.addEventListener('input', function () {
-  const query = this.value.toLowerCase();
-  const posts = [
-    {% for post in site.posts %}
-    {
-      title: "{{ post.title }}",
-      url: "{{ post.url }}",
-    },
-    {% endfor %}
-  ];
-
-  searchResults.innerHTML = '';
-  if (query) {
-    const filteredPosts = posts.filter(post =>
-      post.title.toLowerCase().includes(query)
-    );
-
-    if (filteredPosts.length > 0) {
-      searchResults.classList.remove('hidden');
-      filteredPosts.forEach(post => {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${post.url}" class="block p-3 hover:bg-gray-200">${post.title}</a>`;
-        searchResults.appendChild(li);
-      });
-    } else {
-      searchResults.classList.add('hidden');
+  searchInput.addEventListener('input', async function () {
+    const query = this.value.trim();
+    if (!query) {
+      resultsContainer.innerHTML = '';
+      return;
     }
-  } else {
-    searchResults.classList.add('hidden');
-  }
+
+    const response = await fetch('/search.json');
+    const posts = await response.json();
+    
+    const results = posts.filter(post => post.title.toLowerCase().includes(query.toLowerCase()));
+    
+    resultsContainer.innerHTML = results.map(post => `
+      <li>
+        <a href="${post.url}" class="block hover:bg-gray-200 p-2 rounded">${post.title}</a>
+      </li>
+    `).join('');
+  });
 });
