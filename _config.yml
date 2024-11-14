@@ -1,11 +1,25 @@
-title: My Jekyll Blog with Tailwind CSS
-description: A blog powered by Jekyll and styled with Tailwind CSS.
-baseurl: "/Jekyll-blog"
-url: "https://ltxstudio.github.io"
-
-markdown: kramdown
+title: "My Enhanced Jekyll Blog"
+description: "A feature-rich blog powered by Jekyll and Tailwind CSS."
+url: ""
+baseurl: ""
 theme: minima
+markdown: kramdown
+highlighter: rouge
+
 plugins:
   - jekyll-feed
-exclude:
-  - node_modules
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-archives
+
+paginate: 5
+paginate_path: "/page:num/"
+
+disqus:
+  shortname: your-disqus-shortname
+
+social_links:
+  twitter: https://twitter.com/yourhandle
+  linkedin: https://linkedin.com/in/yourprofile
+  github: https://github.com/yourusername
