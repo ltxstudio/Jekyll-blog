@@ -1,0 +1,13 @@
+<div class="text-sm text-gray-500 mb-4">
+  <p>Category: 
+    <a href="/categories/{{ page.category | slugify }}" class="text-blue-500 hover:underline">
+      {{ page.category }}
+    </a>
+  </p>
+  <p>Tags:
+    {% for tag in page.tags %}
+      <a href="/tags/{{ tag | slugify }}" class="bg-gray-200 text-sm px-2 py-1 rounded hover:bg-gray-300">{{ tag }}</a>
+    {% endfor %}
+  </p>
+  <p>Author: {{ site.author.name }}</p>
+</div>
