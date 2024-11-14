@@ -1,0 +1,11 @@
+title: My Jekyll Blog with Tailwind CSS
+description: A blog powered by Jekyll and styled with Tailwind CSS.
+baseurl: ""
+url: "https://yourusername.github.io"
+
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+exclude:
+  - node_modules
