@@ -1,0 +1,22 @@
+<div class="fixed bottom-4 right-4">
+  <button
+    id="darkModeToggle"
+    class="bg-gray-700 text-white px-4 py-2 rounded"
+  >
+    Toggle Dark Mode
+  </button>
+</div>
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  toggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    localStorage.setItem(
+      'darkMode',
+      document.documentElement.classList.contains('dark')
+    );
+  });
+
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.documentElement.classList.add('dark');
+  }
+</script>
