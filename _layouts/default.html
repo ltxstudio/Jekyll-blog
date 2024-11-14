@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} - {{ site.title }}</title>
+  <meta name="description" content="{{ page.excerpt | strip_html }}">
+  <meta name="author" content="{{ site.author.name }}">
   <link href="/assets/css/main.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
   {% include nav.html %}
-  {% include search.html %}
   <main class="max-w-4xl mx-auto p-6">
     {{ content }}
   </main>
